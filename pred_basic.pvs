@@ -1,0 +1,41 @@
+
+%%%     Examples and exercises for basic pred commands
+
+pred_basic: THEORY
+BEGIN
+
+arb: TYPE+                        % Arbitrary nonempty type
+
+arb_pred: TYPE = [arb -> bool]    % Predicate type for arb
+
+a,b,c: arb                        % Constants of type arb
+
+x,y,z: VAR arb                    % Variables of type arb
+
+P,Q,R: arb_pred                   % Predicate names
+
+
+%%%   Quantified Formulas    
+
+% Please use split, flatten, inst, and skolem, and their 
+% variants, as appropriate.
+
+quant_0: LEMMA  (FORALL x: P(x)) => P(a)
+
+quant_1: LEMMA  ((FORALL x: P(x) => Q(x)) AND P(a)) => Q(a)
+
+quant_2: LEMMA  (FORALL x: P(x)) => (EXISTS y: P(y))
+
+quant_3: LEMMA  (FORALL x: P(x)) OR (EXISTS y: NOT P(y))
+
+quant_4: LEMMA  NOT (FORALL x: P(x)) IFF (EXISTS x: NOT P(x))
+
+quant_5: LEMMA  NOT (EXISTS x: P(x)) IFF (FORALL x: NOT P(x))
+
+quant_6: LEMMA  (FORALL x: P(x)) AND (FORALL x: Q(x))
+                  IFF (FORALL x: P(x) AND Q(x))
+
+quant_7: LEMMA  (EXISTS x: P(x)) OR (EXISTS x: Q(x))
+                  IFF (EXISTS x: P(x) OR Q(x))
+
+END pred_basic
