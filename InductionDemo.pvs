@@ -1,0 +1,16 @@
+%%
+% @theory: InductionDemo
+% @author: mmoscato
+% @date: Thu, 30 Apr 2026 17:04:10 GMT
+%%
+InductionDemo : THEORY
+BEGIN
+
+  sum(n: nat): RECURSIVE nat = 
+    IF n = 0 THEN 0 ELSE n + sum(n - 1) ENDIF
+  MEASURE n
+
+  sum_formula: THEOREM 
+    FORALL (n: nat): 2 * sum(n) = n * (n + 1)
+
+END InductionDemo

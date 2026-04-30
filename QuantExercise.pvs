@@ -1,0 +1,25 @@
+%%
+% @theory: QuantExercise
+% @author: mmoscato
+% @date: Thu, 30 Apr 2026 17:05:14 GMT
+%%
+QuantExercise: THEORY
+BEGIN 
+
+  % Current tool-box:
+  % - flatten / split
+  % - skeep / inst
+  % - assert
+
+  P: [nat -> bool]
+                                          
+  forall_right: LEMMA                     
+    FORALL (n: nat): n = n                
+
+  forall_left: LEMMA
+    (FORALL (n: nat): P(n)) => P(0)
+
+  exists_left: LEMMA
+    (EXISTS (n: nat): P(n)) => EXISTS (m: nat): P(m)
+
+END QuantExercise
