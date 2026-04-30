@@ -1,0 +1,40 @@
+prove_basic: THEORY
+BEGIN
+
+l,m,n:  VAR int
+
+% Try a decision procedure here.
+distrib: LEMMA  l * (m + n) = (l * m) + (l * n)
+
+% A definition of factorial for some basic proving.
+
+N: VAR nat
+
+factorial(N): RECURSIVE nat = 
+  IF N=0 THEN 1
+  ELSE N*factorial(N-1)
+  ENDIF
+  MEASURE N
+
+% Try expanding the definition here, or use a decision procedure
+
+fact_0: LEMMA factorial(0) = 1
+
+fact_3: LEMMA factorial(3) = 6
+
+fact_13: LEMMA factorial(13) = 6227020800
+
+% You'll need to expand factorial carefully.
+% Be careful, "grind" will run away...  
+
+fact_pos: LEMMA 
+N>=1 IMPLIES 
+factorial(N) = N*factorial(N-1)
+
+% Use the previous lemma to prove this. 
+
+fact_large: LEMMA 
+N >= 3 IMPLIES
+factorial(N) = N*(N-1)*(N-2)*factorial(N-3)
+
+END prove_basic
